@@ -31,9 +31,11 @@ public class SistemaAcademico {
             opcion = leer.nextInt();
 
             switch (opcion) {
-                case 1:
-                    System.out.println("Opcion 1 seleccionada...");
-                    break;
+                case 1: registrarEstudiante(); break;
+                case 2: break;
+                case 3: break;
+                case 4: break;
+                case 5: break;
                 case 6:
                     System.out.println("Saliendo del sistema...");
                     break;
@@ -41,6 +43,34 @@ public class SistemaAcademico {
                     System.out.println("Opcion no valida.");
             }
         } while (opcion >= 6 && opcion <= 1);
+    }
+    
+    public static void registrarEstudiante() {
+        Scanner leer = new Scanner(System.in);
+        
+        System.out.println("\n--- REGISTRO DE NUEVO ESTUDIANTE ---");
+        
+        System.out.print("Ingrese el numero de identificacion: ");
+        String identificacion = leer.nextLine();
+        
+        System.out.print("Ingrese el nombre: ");
+        String nombre = leer.nextLine();
+        
+        System.out.print("Ingrese el apellido: ");
+        String apellido = leer.nextLine();
+        
+        System.out.print("Ingrese la edad: ");
+        int edad = leer.nextInt();
+        
+        System.out.print("Ingrese el semestre: ");
+        int semestre = leer.nextInt();
+
+        //NOTA: creacion del objeto usando un constructor que el programador 1 creara mas adelante
+        //Estudiante nuevo = new Estudiante(identificacion, nombre, apellido, edad, semestre);
+        
+        //listaEstudiantes.add(nuevo);
+        
+        System.out.println("Estudiante guardado exitosamente en el sistema...");
     }
     
 }
