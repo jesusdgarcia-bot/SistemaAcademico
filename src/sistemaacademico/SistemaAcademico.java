@@ -32,8 +32,8 @@ public class SistemaAcademico {
 
             switch (opcion) {
                 case 1: registrarEstudiante(); break;
-                case 2: break;
-                case 3: break;
+                case 2: listarEstudiantes(); break;
+                case 3: buscarEstudiante(); break;
                 case 4: break;
                 case 5: break;
                 case 6:
@@ -73,4 +73,34 @@ public class SistemaAcademico {
         System.out.println("Estudiante guardado exitosamente en el sistema...");
     }
     
-}
+    
+public static void listarEstudiantes() {
+        if (listaEstudiantes.isEmpty()) {
+            System.out.println("No hay registros.");
+        } else {
+            for (Estudiante e : listaEstudiantes) {
+                System.out.println(e.toString());
+            }
+        }
+    }
+
+    public static void buscarEstudiante() {
+        Scanner leer = new Scanner(System.in);
+        System.out.print("Ingrese el numero de identificacion a buscar: ");
+        String busqueda = leer.nextLine();
+        boolean encontrado = false;
+
+        for (Estudiante e : listaEstudiantes) {
+         //   if (e.getIdentificacion().equals(busqueda)) {
+                System.out.println("Estudiante encontrado: " + e.toString());
+                encontrado = true;
+                break;
+            }
+        }
+ //       if (!encontrado) System.out.println("Estudiante no encontrado.");
+    
+    
+    
+    }
+    
+    
