@@ -34,7 +34,7 @@ public class SistemaAcademico {
                 case 1: registrarEstudiante(); break;
                 case 2: listarEstudiantes(); break;
                 case 3: buscarEstudiante(); break;
-                case 4: break;
+                case 4: actualizarEstudiante(); break;
                 case 5: break;
                 case 6:
                     System.out.println("Saliendo del sistema...");
@@ -99,8 +99,29 @@ public static void listarEstudiantes() {
         }
  //       if (!encontrado) System.out.println("Estudiante no encontrado.");
     
+ public static void actualizarEstudiante() {
+Scanner leer = new Scanner(System.in);
+System.out.print("Ingrese la identificacion del estudiante a actualizar: ");
+String identificacionBusqueda = leer.nextLine();
+
+for (Estudiante e : listaEstudiantes) {
+if (e.getIdentificacion().equals(identificacionBusqueda)) {
+System.out.print("Nuevo nombre: ");
+e.setNombre(leer.nextLine());
+System.out.print("Nuevo apellido: ");
+e.setApellido(leer.nextLine());
+System.out.print("Nueva edad: ");
+e.setEdad(leer.nextInt());
+System.out.print("Nuevo semestre: ");
+e.setSemestre(leer.nextInt());
+System.out.println("Datos actualizados con exito");
+return; }
+}
+System.out.println("No se encontro el estudiante.");
+}
     
-    
-    }
+
+
+}
     
     
