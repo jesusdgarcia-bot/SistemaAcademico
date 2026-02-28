@@ -4,17 +4,29 @@
  */
 package javaapplication10;
 
+import java.util.Scanner;
+
 /**
  *
  * @author Equipo
  */
 public class JavaApplication10 {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-    }
     
+public static void registrarAsignatura() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Ingrese código de la asignatura: ");
+        String codigo = scanner.nextLine();
+        System.out.print("Ingrese nombre de la asignatura: ");
+        String nombre = scanner.nextLine();
+        System.out.print("Ingrese créditos: ");
+        int creditos = scanner.nextInt();
+        scanner.nextLine(); // limpiar buffer
+        System.out.print("Ingrese nombre del docente: ");
+        String docente = scanner.nextLine();
+
+        Asignatura nueva = new Asignatura(codigo, nombre, creditos, docente);
+        asignaturas.add(nueva);
+        System.out.println("¡Asignatura registrada exitosamente!");
+    }
 }
