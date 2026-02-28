@@ -35,7 +35,7 @@ public class SistemaAcademico {
                 case 2: listarEstudiantes(); break;
                 case 3: buscarEstudiante(); break;
                 case 4: actualizarEstudiante(); break;
-                case 5: break;
+                case 5: eliminarEstudiante(); break;
                 case 6:
                     System.out.println("Saliendo del sistema...");
                     break;
@@ -97,7 +97,7 @@ public static void listarEstudiantes() {
                 break;
             }
         }
- //       if (!encontrado) System.out.println("Estudiante no encontrado.");
+        if (!encontrado) System.out.println("Estudiante no encontrado.");
     
  public static void actualizarEstudiante() {
 Scanner leer = new Scanner(System.in);
@@ -120,8 +120,26 @@ return; }
 System.out.println("No se encontro el estudiante.");
 }
     
+public static void eliminarEstudiante() {
+  Scanner leer = new Scanner (System.in);
+    System.out.println("Ingrese el numero de identificacion a eliminar"); 
+     String busqueda = leer.nextLine();
+        boolean encontrado = false;
+        
+          for (Estudiante e : listaEstudiantes) {
+           if (e.getIdentificacion().equals(busqueda)) {
+               e.setEstado("inactivo");
+               System.out.println("el estudiante de identificacion  " + busqueda + " ha sido eliminado");
+             encontrado = true;
+                break;
+        
+}
+}
 
-
+}
+ if (!encontrado) System.out.println("Estudiante no encontrado.");
+ 
+ 
 }
     
     
