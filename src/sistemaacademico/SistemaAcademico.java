@@ -1,16 +1,16 @@
-package sistemaacademico;
+package sistemaacademico; 
 
-/**
- *
- * @author jssdv
- */
+import java.util.ArrayList; 
+import java.util.Scanner;   
+
 public class SistemaAcademico {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-    }
     
+    static ArrayList<Estudiante> listaEstudiantes = new ArrayList<>();
+    static ArrayList<String> listaAsignaturas = new ArrayList<>(); 
+    static ArrayList<Double> listaNotas = new ArrayList<>();
+
+    
+    public static void main(String[] args) {
+       
+    }
 }
