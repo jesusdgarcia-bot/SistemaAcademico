@@ -182,5 +182,53 @@ public static void actualizarAsignatura() {
         System.out.println("\n¡Asignatura actualizada exitosamente!");
         System.out.println("──────────────────────────────────────────");
     }
+
+    public static void eliminarAsignatura() {
+        System.out.println("\n══════════════════════════════════════════");
+        System.out.println("         ELIMINAR ASIGNATURA");
+        System.out.println("══════════════════════════════════════════");
+
+        if (asignaturas.isEmpty()) {
+            System.out.println("No hay asignaturas registradas para eliminar.");
+            System.out.println("──────────────────────────────────────────");
+            return;
+        }
+
+        System.out.print("Ingrese el código de la asignatura a eliminar: ");
+        String codigoEliminar = scanner.nextLine().trim();
+
+        Asignatura asignaturaAEliminar = null;
+        for (Asignatura a : asignaturas) {
+            if (a.getCodigo().equalsIgnoreCase(codigoEliminar)) {
+                asignaturaAEliminar = a;
+                break;
+            }
+        }
+
+        if (asignaturaAEliminar == null) {
+            System.out.println("No se encontró ninguna asignatura con código: " + codigoEliminar);
+            System.out.println("──────────────────────────────────────────");
+            return;
+        }
+
+        // Confirmación para evitar eliminaciones accidentales
+        System.out.println("\nAsignatura encontrada:");
+        System.out.println("Código   : " + asignaturaAEliminar.getCodigo());
+        System.out.println("Nombre   : " + asignaturaAEliminar.getNombre());
+        System.out.println("Créditos : " + asignaturaAEliminar.getCreditos());
+        System.out.println("Docente  : " + asignaturaAEliminar.getDocente());
+        
+        System.out.print("\n¿Está seguro que desea ELIMINAR esta asignatura? (sí/no): ");
+        String confirmacion = scanner.nextLine().trim().toLowerCase();
+
+        if (confirmacion.equals("sí") || confirmacion.equals("si") || confirmacion.equals("s")) {
+            asignaturas.remove(asignaturaAEliminar);
+            System.out.println("\n¡Asignatura eliminada exitosamente!");
+        } else {
+            System.out.println("\nOperación cancelada. La asignatura NO fue eliminada.");
+        }
+        
+        System.out.println("──────────────────────────────────────────");
+    }
 }
 
