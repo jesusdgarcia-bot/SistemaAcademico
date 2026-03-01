@@ -23,6 +23,7 @@ public class SistemaAcademico {
    System.out.println("Sistema Académico - Pruebas Desarrollador 1");
    registrarAsignatura();
    listarAsignaturas();
+   buscarAsignatura();
 
     
     
@@ -81,6 +82,41 @@ public static void listarAsignaturas() {
         System.out.println("───────────────────────────────────────────────────────────────────────");
         System.out.println("Total de asignaturas: " + asignaturas.size());
         System.out.println();
+    }
+
+public static void buscarAsignatura() {
+        System.out.println("\n══════════════════════════════════════════");
+        System.out.println("          BUSCAR ASIGNATURA");
+        System.out.println("══════════════════════════════════════════");
+
+        if (asignaturas.isEmpty()) {
+            System.out.println("No hay asignaturas registradas para buscar.");
+            System.out.println("──────────────────────────────────────────");
+            return;
+        }
+
+        System.out.print("Ingrese el código de la asignatura a buscar: ");
+        String codigoBuscado = scanner.nextLine().trim();
+
+        boolean encontrada = false;
+        for (Asignatura a : asignaturas) {
+            if (a.getCodigo().equalsIgnoreCase(codigoBuscado)) {
+                System.out.println("\nAsignatura encontrada:");
+                System.out.println("──────────────────────────────────────────");
+                System.out.println("Código   : " + a.getCodigo());
+                System.out.println("Nombre   : " + a.getNombre());
+                System.out.println("Créditos : " + a.getCreditos());
+                System.out.println("Docente  : " + a.getDocente());
+                System.out.println("──────────────────────────────────────────");
+                encontrada = true;
+                break;
+            }
+        }
+
+        if (!encontrada) {
+            System.out.println("No se encontró ninguna asignatura con código: " + codigoBuscado);
+            System.out.println("──────────────────────────────────────────");
+        }
     }
 }
 
