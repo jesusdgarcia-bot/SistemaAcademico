@@ -351,4 +351,34 @@ public static void actualizarAsignatura() {
           return null;
         }
     }
+
+    public void actualizarNota(){
+        Nota nota = verificarEstudianteYAsignatura();
+        int periodo;
+
+          if(nota != null){
+              do{
+                  System.out.print("Ingrese el periodo(0-3): "); periodo = Integer.parseInt(scanner.nextLine());
+              }while(periodo<0 || periodo>3);
+
+            nota = buscarNota(nota.getEstudiante(), nota.getAsignatura(), periodo);
+
+              if(nota != null){
+                double valor;
+
+                  do{
+                    System.out.print("Ingrese el nuevo valor de la nota(0-5): "); valor = Double.parseDouble(scanner.nextLine());
+                  }while(valor<0 || valor>5);
+                nota.setValor(valor);
+
+                System.out.println("Nota actualizada...");
+                System.out.println("Presione enter para continuar..."); scanner.nextLine();
+              }else {
+                System.out.println("Nota no encontrada...");
+                System.out.println("Presione enter para continuar..."); scanner.nextLine();
+              }
+          }
+    }
+
+    
 }
