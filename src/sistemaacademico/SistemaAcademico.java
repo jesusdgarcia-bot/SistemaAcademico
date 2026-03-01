@@ -230,5 +230,54 @@ public static void actualizarAsignatura() {
         
         System.out.println("──────────────────────────────────────────");
     }
-}
+    
+    
+    public Nota verificarEstudianteYAsignatura(){
+        String codEstudiante;
+        String codAsignatura;
 
+        System.out.print("Ingrese el codigo del estudiante: "); codEstudiante = scanner.nextLine();
+        Estudiante estudiante = null;
+
+          for(Estudiante est : estudiantes){
+            if(est.getCodigo().equals(codEstudiante)){
+              estudiante = est;
+              break;
+            }
+          }
+
+        System.out.print("Ingrese el codigo de la asignatura: "); codAsignatura = scanner.nextLine();
+        Asignatura asignatura = null;
+
+          for(Asignatura asig : asignaturas){
+            if(asig.getCodigo().equals(codAsignatura)){
+              asignatura = asig;
+              break;
+            }
+          }
+
+        Nota nota = null;
+
+          if(estudiante != null && asignatura != null){
+            nota = new Nota();
+            nota.setEstudiante(estudiante);
+            nota.setAsignatura(asignatura);
+            return nota;
+          }else if(estudiante == null && asignatura == null){
+            System.out.println("Estudiante no encontrado..."); 
+            System.out.println("Asignatura no encontrada...");
+            System.out.println("Presione enter para continuar..."); scanner.nextLine();
+            return nota;
+          }else if(estudiante == null){
+            System.out.println("Estudiante no encontrado...");
+            System.out.println("Presione enter para continuar..."); scanner.nextLine();
+            return nota;
+          }else{
+            System.out.println("Asignatura no encontrada...");
+            System.out.println("Presione enter para continuar..."); scanner.nextLine();
+            return nota;
+          }
+    }
+    
+    
+}
