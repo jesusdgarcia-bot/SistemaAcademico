@@ -51,7 +51,7 @@ public class SistemaAcademico {
         System.out.println("\n--- REGISTRO DE NUEVO ESTUDIANTE ---");
         
         System.out.print("Ingrese el numero de identificacion: ");
-        String identificacion = leer.nextLine();
+        String codigo = leer.nextLine();
         
         System.out.print("Ingrese el nombre: ");
         String nombre = leer.nextLine();
@@ -65,10 +65,9 @@ public class SistemaAcademico {
         System.out.print("Ingrese el semestre: ");
         int semestre = leer.nextInt();
 
-        //NOTA: creacion del objeto usando un constructor que el programador 1 creara mas adelante
-        //Estudiante nuevo = new Estudiante(identificacion, nombre, apellido, edad, semestre);
+        Estudiante nuevo = new Estudiante(codigo, nombre, apellido, edad, semestre);
         
-        //listaEstudiantes.add(nuevo);
+        listaEstudiantes.add(nuevo);
         
         System.out.println("Estudiante guardado exitosamente en el sistema...");
     }
@@ -91,21 +90,21 @@ public static void listarEstudiantes() {
         boolean encontrado = false;
 
         for (Estudiante e : listaEstudiantes) {
-         //   if (e.getIdentificacion().equals(busqueda)) {
+            if (e.getcodigo().equals(busqueda)) {
                 System.out.println("Estudiante encontrado: " + e.toString());
                 encontrado = true;
                 break;
             }
         }
-      //  if (!encontrado) System.out.println("Estudiante no encontrado.");
+       if (!encontrado) System.out.println("Estudiante no encontrado.");
     
  public static void actualizarEstudiante() {
 Scanner leer = new Scanner(System.in);
 System.out.print("Ingrese la identificacion del estudiante a actualizar: ");
-String identificacionBusqueda = leer.nextLine();
+String codigoBusqueda = leer.nextLine();
 
 for (Estudiante e : listaEstudiantes) {
-if (e.getIdentificacion().equals(identificacionBusqueda)) {
+if (e.getcodigo().equals(codigoBusqueda)) {
 System.out.print("Nuevo nombre: ");
 e.setNombre(leer.nextLine());
 System.out.print("Nuevo apellido: ");
@@ -127,7 +126,7 @@ public static void eliminarEstudiante() {
         boolean encontrado = false;
         
           for (Estudiante e : listaEstudiantes) {
-           if (e.getIdentificacion().equals(busqueda)) {
+           if (e.getcodigo().equals(busqueda)) {
                e.setEstado("inactivo");
                System.out.println("el estudiante de identificacion  " + busqueda + " ha sido eliminado");
              encontrado = true;
@@ -137,7 +136,7 @@ public static void eliminarEstudiante() {
 }
 
 }
- //if (!encontrado) System.out.println("Estudiante no encontrado.");
+ if (!encontrado) System.out.println("Estudiante no encontrado.");
  
  
 }
