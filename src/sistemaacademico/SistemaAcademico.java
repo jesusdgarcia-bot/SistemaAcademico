@@ -11,6 +11,7 @@ public class SistemaAcademico {
 
     private static ArrayList<Estudiante> estudiantes = new ArrayList<>();
     private static ArrayList<Asignatura> asignaturas = new ArrayList<>();
+    private static ArrayList<Nota> notas = new ArrayList<>();
     
     private static final Scanner scanner = new Scanner(System.in);
     
@@ -279,5 +280,37 @@ public static void actualizarAsignatura() {
           }
     }
     
-    
+    public void registrarNota(){
+        double valor;
+        int periodo;
+
+        Nota nota = verificarEstudianteYAsignatura();
+
+          if(nota != null){
+              do{
+                System.out.print("Ingrese el valor de la nota(0-5): "); valor = Double.parseDouble(scanner.nextLine());
+              }while(valor<0 || valor>5);
+              nota.setValor(valor);
+
+              do{
+                System.out.print("Ingrese el periodo(0-3): "); periodo = Integer.parseInt(scanner.nextLine());
+              }while(periodo<0 || periodo>3);
+              nota.setPeriodo(periodo);
+
+            Nota n = buscarNota(nota.getEstudiante(), nota.getAsignatura(), periodo);
+
+              if(n == null){
+                if(notas.add(nota)){
+                  System.out.println("Nota registrada correctamente.");
+                  System.out.println("Presione enter para continuar..."); scanner.nextLine();
+                }else{
+                  System.out.println("Error al registrar la nota.");
+                  System.out.println("Presione enter para continuar..."); scanner.nextLine();
+                }
+              }else {
+                System.out.println("Error: Ya existe una nota registrada para el periodo " + periodo);
+                System.out.println("Presione enter para continuar..."); scanner.nextLine();
+              }
+          }
+    }
 }
