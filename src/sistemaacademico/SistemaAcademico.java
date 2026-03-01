@@ -118,5 +118,69 @@ public static void buscarAsignatura() {
             System.out.println("──────────────────────────────────────────");
         }
     }
+
+public static void actualizarAsignatura() {
+        System.out.println("\n══════════════════════════════════════════");
+        System.out.println("       ACTUALIZAR ASIGNATURA");
+        System.out.println("══════════════════════════════════════════");
+
+        if (asignaturas.isEmpty()) {
+            System.out.println("No hay asignaturas registradas para actualizar.");
+            System.out.println("──────────────────────────────────────────");
+            return;
+        }
+
+        System.out.print("Ingrese el código de la asignatura a actualizar: ");
+        String codigoBuscado = scanner.nextLine().trim();
+
+        Asignatura asignaturaEncontrada = null;
+        for (Asignatura a : asignaturas) {
+            if (a.getCodigo().equalsIgnoreCase(codigoBuscado)) {
+                asignaturaEncontrada = a;
+                break;
+            }
+        }
+
+        if (asignaturaEncontrada == null) {
+            System.out.println("No se encontró ninguna asignatura con código: " + codigoBuscado);
+            System.out.println("──────────────────────────────────────────");
+            return;
+        }
+
+        // Mostrar datos actuales
+        System.out.println("\nDatos actuales de la asignatura:");
+        System.out.println("Código   : " + asignaturaEncontrada.getCodigo());
+        System.out.println("Nombre   : " + asignaturaEncontrada.getNombre());
+        System.out.println("Créditos : " + asignaturaEncontrada.getCreditos());
+        System.out.println("Docente  : " + asignaturaEncontrada.getDocente());
+        System.out.println("──────────────────────────────────────────");
+
+        // Actualizar campos (dejar vacío para no cambiar)
+        System.out.print("Nuevo nombre (Enter para mantener): ");
+        String nuevoNombre = scanner.nextLine().trim();
+        if (!nuevoNombre.isEmpty()) {
+            asignaturaEncontrada.setNombre(nuevoNombre);
+        }
+
+        System.out.print("Nuevos créditos (Enter para mantener): ");
+        String creditosStr = scanner.nextLine().trim();
+        if (!creditosStr.isEmpty()) {
+            try {
+                int nuevosCreditos = Integer.parseInt(creditosStr);
+                asignaturaEncontrada.setCreditos(nuevosCreditos);
+            } catch (NumberFormatException e) {
+                System.out.println("Error: créditos inválidos. No se actualizó.");
+            }
+        }
+
+        System.out.print("Nuevo docente (Enter para mantener): ");
+        String nuevoDocente = scanner.nextLine().trim();
+        if (!nuevoDocente.isEmpty()) {
+            asignaturaEncontrada.setDocente(nuevoDocente);
+        }
+
+        System.out.println("\n¡Asignatura actualizada exitosamente!");
+        System.out.println("──────────────────────────────────────────");
+    }
 }
 
