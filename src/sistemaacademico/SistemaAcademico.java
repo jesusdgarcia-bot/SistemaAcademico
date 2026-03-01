@@ -97,7 +97,7 @@ public static void listarEstudiantes() {
                 break;
             }
         }
-        if (!encontrado) System.out.println("Estudiante no encontrado.");
+      //  if (!encontrado) System.out.println("Estudiante no encontrado.");
     
  public static void actualizarEstudiante() {
 Scanner leer = new Scanner(System.in);
@@ -137,7 +137,7 @@ public static void eliminarEstudiante() {
 }
 
 }
- if (!encontrado) System.out.println("Estudiante no encontrado.");
+ //if (!encontrado) System.out.println("Estudiante no encontrado.");
  
  
 }
