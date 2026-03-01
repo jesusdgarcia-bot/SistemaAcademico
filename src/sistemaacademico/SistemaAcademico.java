@@ -380,5 +380,29 @@ public static void actualizarAsignatura() {
           }
     }
 
-    
+    public void eliminarNota(){
+        Nota nota = verificarEstudianteYAsignatura();
+        int periodo;
+
+          if(nota != null){
+              do{
+                  System.out.print("Ingrese el periodo(0-3): "); periodo = Integer.parseInt(scanner.nextLine());
+              }while(periodo<0 || periodo>3);
+
+            nota = buscarNota(nota.getEstudiante(), nota.getAsignatura(), periodo);
+
+              if(nota != null){
+                if(notas.remove(nota)){
+                  System.out.println("Nota eliminada...");
+                  System.out.println("Presione enter para continuar..."); scanner.nextLine();
+                }else {
+                  System.out.println("Error al eliminar la nota...");
+                  System.out.println("Presione enter para continuar..."); scanner.nextLine();
+                }
+              }else {
+                System.out.println("Nota no encontrada...");
+                System.out.println("Presione enter para continuar..."); scanner.nextLine();
+              }
+          }
+    }
 }
