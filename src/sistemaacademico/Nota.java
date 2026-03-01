@@ -59,4 +59,15 @@ public class Nota {
     public void setPeriodo(int periodo){ 
       this.periodo = periodo; 
     } 
+    
+    @Override
+    public String toString(){
+      return String.format(" %-15s %-15s | %-20s | %-8d | %-3d | %-7d | %-4.2f\n", 
+                            estudiante.getNombre(), 
+                            estudiante.getApellido(), 
+                            asignatura.getNombre(), 
+                            asignatura.getCreditos(),
+                            estudiante.getSemestre(), 
+                            this.periodo, this.valor);
+    }
 }
