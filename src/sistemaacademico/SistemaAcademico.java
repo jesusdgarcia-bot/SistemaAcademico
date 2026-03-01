@@ -313,4 +313,42 @@ public static void actualizarAsignatura() {
               }
           }
     }
+    
+    public void listarNotas(){
+        if(!notas.isEmpty()){
+          System.out.println("N°  | ESTUDIANTE                  | ASIGNATURA           | CREDITOS | SEM | PERIODO | NOTA");
+          System.out.println("------------------------------------------------------------------------------------------");
+
+          int i = 1;
+
+            for (Nota nota : notas) {
+              System.out.printf("%-3d | %s", i, nota.toString());
+              i++;
+            }
+
+          System.out.println("Presione enter para continuar..."); scanner.nextLine();
+        }else{
+          System.out.println("No hay notas registradas...");
+          System.out.println("Presione enter para continuar..."); scanner.nextLine();
+        }
+    }
+  
+    public Nota buscarNota(Estudiante estudiante, Asignatura asignatura, int periodo){
+        if(!notas.isEmpty()){
+
+            for(Nota nota : notas){
+              if((nota.getEstudiante().getCodigo().equals(estudiante.getCodigo())) 
+                  && (nota.getAsignatura().getCodigo().equals(asignatura.getCodigo())) 
+                  && (nota.getPeriodo() == periodo)){
+                return nota;
+              }
+            }
+
+          return null;
+        }else{
+          System.out.println("No hay notas registradas...");
+          System.out.println("Presione enter para continuar..."); scanner.nextLine();
+          return null;
+        }
+    }
 }
