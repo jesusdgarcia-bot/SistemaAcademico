@@ -21,6 +21,8 @@ public class SistemaAcademico {
         // TODO code application logic here
         // --------------------------------------------------
    System.out.println("Sistema Académico - Pruebas Desarrollador 1");
+   registrarAsignatura();
+   listarAsignaturas();
 
     
     
@@ -51,6 +53,34 @@ public static void registrarAsignatura() {
         asignaturas.add(nueva);
         
         System.out.println("¡Asignatura registrada con éxito!");
+    }
+
+public static void listarAsignaturas() {
+        System.out.println("\n══════════════════════════════════════════");
+        System.out.println("          LISTADO DE ASIGNATURAS");
+        System.out.println("══════════════════════════════════════════");
+
+        if (asignaturas.isEmpty()) {
+            System.out.println("No hay asignaturas registradas todavía.");
+            System.out.println("──────────────────────────────────────────");
+            return;
+        }
+
+        System.out.printf("%-10s %-35s %-8s %-30s%n",
+                "Código", "Nombre", "Créditos", "Docente");
+        System.out.println("───────────────────────────────────────────────────────────────────────");
+
+        for (Asignatura a : asignaturas) {
+            System.out.printf("%-10s %-35s %-8d %-30s%n",
+                    a.getCodigo(),
+                    a.getNombre(),
+                    a.getCreditos(),
+                    a.getDocente());
+        }
+
+        System.out.println("───────────────────────────────────────────────────────────────────────");
+        System.out.println("Total de asignaturas: " + asignaturas.size());
+        System.out.println();
     }
 }
 
