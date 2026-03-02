@@ -2,48 +2,26 @@ package sistemaacademico;
 
 import java.util.ArrayList; 
 import java.util.Scanner;   
+import sistemaacademico.Asignatura;
+import sistemaacademico.Estudiante;
+import sistemaacademico.Nota;
 
-<<<<<<< HEAD
-import java.util.ArrayList;
-import java.util.Scanner;
 
-/**
- *
- * @author jssdv
- */
-=======
->>>>>>> feature/menu-principal
 public class SistemaAcademico {
-    
-    static ArrayList<Estudiante> listaEstudiantes = new ArrayList<>();
-    static ArrayList<String> listaAsignaturas = new ArrayList<>(); 
-    static ArrayList<Double> listaNotas = new ArrayList<>();
+ 
 
-<<<<<<< HEAD
+
     private static ArrayList<Estudiante> estudiantes = new ArrayList<>();
     private static ArrayList<Asignatura> asignaturas = new ArrayList<>();
     private static ArrayList<Nota> notas = new ArrayList<>();
     
     private static final Scanner scanner = new Scanner(System.in);
-    
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-        // --------------------------------------------------
-   System.out.println("Sistema Académico - Pruebas Desarrollador 1");
-   registrarAsignatura();
-   listarAsignaturas();
-   buscarAsignatura();
 
-    
-=======
     
     public static void main(String[] args) {
       mostrarMenu();
     }
->>>>>>> feature/menu-principal
+
     
     public static void mostrarMenu() {
         Scanner leer = new Scanner(System.in);
@@ -96,19 +74,21 @@ public class SistemaAcademico {
         System.out.print("Ingrese el semestre: ");
         int semestre = leer.nextInt();
 
-        Estudiante nuevo = new Estudiante(codigo, nombre, apellido, edad, semestre);
+        boolean estado = true;
         
-        listaEstudiantes.add(nuevo);
+        Estudiante nuevo = new Estudiante(codigo, nombre, apellido, edad, semestre, estado);
+        
+        estudiantes.add(nuevo);
         
         System.out.println("Estudiante guardado exitosamente en el sistema...");
     }
     
     
 public static void listarEstudiantes() {
-        if (listaEstudiantes.isEmpty()) {
+        if (estudiantes.isEmpty()) {
             System.out.println("No hay registros.");
         } else {
-            for (Estudiante e : listaEstudiantes) {
+            for (Estudiante e : estudiantes) {
                 System.out.println(e.toString());
             }
         }
@@ -120,8 +100,8 @@ public static void listarEstudiantes() {
         String busqueda = leer.nextLine();
         boolean encontrado = false;
 
-        for (Estudiante e : listaEstudiantes) {
-            if (e.getcodigo().equals(busqueda)) {
+        for (Estudiante e : estudiantes) {
+            if (e.getCodigo().equals(busqueda)) {
                 System.out.println("Estudiante encontrado: " + e.toString());
                 encontrado = true;
                 break;
@@ -129,13 +109,16 @@ public static void listarEstudiantes() {
         }
        if (!encontrado) System.out.println("Estudiante no encontrado.");
     
- public static void actualizarEstudiante() {
+    }
+
+  
+public static void actualizarEstudiante() {
 Scanner leer = new Scanner(System.in);
 System.out.print("Ingrese la identificacion del estudiante a actualizar: ");
 String codigoBusqueda = leer.nextLine();
 
-for (Estudiante e : listaEstudiantes) {
-if (e.getcodigo().equals(codigoBusqueda)) {
+for (Estudiante e : estudiantes) {
+if (e.getCodigo().equals(codigoBusqueda)) {
 System.out.print("Nuevo nombre: ");
 e.setNombre(leer.nextLine());
 System.out.print("Nuevo apellido: ");
@@ -147,23 +130,25 @@ e.setSemestre(leer.nextInt());
 System.out.println("Datos actualizados con exito");
 return; }
 }
-<<<<<<< HEAD
+}
+
+
     
 public static void registrarAsignatura() {
         System.out.println("\n=== Registrar Nueva Asignatura ===");
         
-        System.out.print("Código: ");
+        System.out.print("Codigo: ");
         String codigo = scanner.nextLine().trim();
         
         System.out.print("Nombre: ");
         String nombre = scanner.nextLine().trim();
         
-        System.out.print("Créditos: ");
+        System.out.print("Creditos: ");
         int creditos;
         try {
             creditos = Integer.parseInt(scanner.nextLine().trim());
         } catch (NumberFormatException e) {
-            System.out.println("Error: créditos deben ser un número entero.");
+            System.out.println("Error: creditos deben ser un numero entero.");
             return;
         }
         
@@ -173,7 +158,7 @@ public static void registrarAsignatura() {
         Asignatura nueva = new Asignatura(codigo, nombre, creditos, docente);
         asignaturas.add(nueva);
         
-        System.out.println("¡Asignatura registrada con éxito!");
+        System.out.println("Asignatura registrada con exito");
     }
 
 public static void listarAsignaturas() {
@@ -524,10 +509,9 @@ public static void actualizarAsignatura() {
               }
           }
     }
-}
-=======
-System.out.println("No se encontro el estudiante.");
-}
+
+
+
     
 public static void eliminarEstudiante() {
   Scanner leer = new Scanner (System.in);
@@ -535,21 +519,21 @@ public static void eliminarEstudiante() {
      String busqueda = leer.nextLine();
         boolean encontrado = false;
         
-          for (Estudiante e : listaEstudiantes) {
-           if (e.getcodigo().equals(busqueda)) {
-               e.setEstado("inactivo");
+          for (Estudiante e : estudiantes) {
+           if (e.getCodigo().equals(busqueda)) {
+               e.setEstado(false);
                System.out.println("el estudiante de identificacion  " + busqueda + " ha sido eliminado");
              encontrado = true;
                 break;
         
 }
 }
+if (!encontrado) System.out.println("Estudiante no encontrado.");
+}
+ 
 
-}
- if (!encontrado) System.out.println("Estudiante no encontrado.");
- 
  
 }
     
     
->>>>>>> feature/menu-principal
+

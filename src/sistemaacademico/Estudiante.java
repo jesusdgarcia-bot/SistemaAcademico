@@ -1,27 +1,22 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package sistemaacademico;
 
-/**
- *
- * @author Equipo
- */
+
 public class Estudiante {
  private String codigo;
     private String nombre;
     private String apellido;
     private int edad;
     private int semestre;
+    private boolean estado;
 
 // Constructor con todos los parámetros (recomendado para crear objetos completos)
-    public Estudiante(String codigo, String nombre, String apellido, int edad, int semestre) {
+    public Estudiante(String codigo, String nombre, String apellido, int edad, int semestre, boolean estado) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.apellido = apellido;
         this.edad = edad;
         this.semestre = semestre;
+        this.estado= estado;
     }
     
     // Constructor vacío (útil para crear objeto y luego setear valores)
@@ -68,6 +63,15 @@ public class Estudiante {
     public void setSemestre(int semestre) {
         this.semestre = semestre;
     }
+
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+    
     @Override
     public String toString() {
         return "Estudiante{" +
@@ -76,6 +80,7 @@ public class Estudiante {
                ", apellido='" + apellido + '\'' +
                ", edad=" + edad +
                ", semestre=" + semestre +
-               '}';
+              ", estado=" + estado + '}';
+        
     }
 }
